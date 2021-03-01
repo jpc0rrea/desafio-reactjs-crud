@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
         available: true,
       });
 
-      setFoods([...foods, response.data])
+      setFoods([...foods, response.data]);
     } catch (err) {
       console.log(err);
     }
@@ -57,11 +57,13 @@ const Dashboard: React.FC = () => {
       const response = await api.put(`foods/${editingFood.id}`, {
         ...editingFood,
         ...food,
-      })
+      });
 
       setFoods(
-        foods.map(mappedFood => mappedFood.id === editingFood.id ? { ...response.data } : mappedFood)
-      )
+        foods.map(mappedFood =>
+          mappedFood.id === editingFood.id ? { ...response.data } : mappedFood,
+        ),
+      );
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +75,7 @@ const Dashboard: React.FC = () => {
 
       setFoods(foods.filter(food => food.id !== id));
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
@@ -86,9 +88,8 @@ const Dashboard: React.FC = () => {
   }
 
   function handleEditFood(food: IFoodPlate): void {
-    setEditingFood(food)
+    setEditingFood(food);
     toggleEditModal();
-
   }
 
   return (
